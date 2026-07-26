@@ -1,0 +1,7 @@
+# Virtual Environment
+playw/
+
+# Python & Pytest Cache
+*.pyc
+__pycache__/
+.pytest_cache/
