@@ -75,8 +75,8 @@ def test_prompt_alert(page:Page):
     """
     page.goto('https://testautomationpractice.blogspot.com/')
 
-    # page.on('dialog',lambda x:x.accept('100000000'))
-    page.on('dialog',lambda x:x.dismiss())
+    page.on('dialog',lambda x:x.accept('100000000'))
+    # page.on('dialog',lambda x:x.dismiss())
     page.wait_for_timeout(3000)
     page.get_by_role('button',name='Prompt Alert').click()
     page.wait_for_timeout(3000)
