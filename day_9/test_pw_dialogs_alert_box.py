@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 import pytest
 
 """
@@ -26,6 +26,16 @@ What & Why to Register Event    ->  Playwright is way too fast and whenever Aler
 How to Register an Event        ->  By using .on() method,      i.e  .on(<EventType>, <ListenerFunction>),       e.g.  page.on("dialog",<ListenerFunction>)
                                     NOTE:       "dialog"     is MANDATORY ARGUMENT WE NEED TO PASS to Handle Alerts, followed by Custom/Listener Function
                                     We can make use of Python's lambda functions also.
+
+"""
+"""
+Actions Inside Events:
+
+1. accept               ->  Accepts the dialog and also Pass the Input Value into Dialog 
+2. dismiss              ->  Dismisses the dialog
+3. type                 ->  Returns the type of Dialog, can be one of 'alert', 'beforeunload', 'confirm', 'prompt'
+4. message              ->  Returns a message that is displayed in the dialog
+5. default_value        ->  Works with 'Prompt' dialog only.    It returns the Default Value if exists, else empty string 
 
 """
 
