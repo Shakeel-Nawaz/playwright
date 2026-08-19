@@ -1,0 +1,2 @@
+Hi 
+This is sample_2 text file, used for uploading and downloading testing in Playwright Python
