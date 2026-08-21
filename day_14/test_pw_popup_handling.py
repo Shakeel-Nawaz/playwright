@@ -15,6 +15,24 @@ NOTE:   POPUP Windows/Pages will have same context, that are available for the p
         e.g.    page1     has     context1,
                 Popup Window   is created from   Page1
                 Popup Window   will have same   context1
+
+
+- Auth Popups
+
+Some Application require authentication, and that authentication maybe asked via popups. And generally Locators for Auth-type Popups are not capturable.
+
+Authentication Popups, freezes the screen until valid Auth Details/credentials such as Username/ID  &  Password is provided.
+
+After successful aunthentication, Popups unfreezes the screen.
+
+To pass credentials, we have 2 options
+1.  Integrate Username/ID and Password      along with url      ->      https://<USERNAME>:<PASSWORD>@www.example.com
+2.  Use of Context Attributes to Pass Credentials               ->      .new_context(
+                                                                                http_credentials=<Credentials in Dictionary format i.e. {'username': <username>,'password':<passWord>} >
+                                                                                )
+
+NOTE: USING OF CONTEXT ATTRIBUTE    IS    *RECOMMENDED*     i.e.    .new_context(http_credentials={'username':<USERNAME>,'password':<PASSWORD>})
+                                                                                
 """
 
 
@@ -60,4 +78,13 @@ def test_popup_handling(playwright:Playwright):
     popup_2.keyboard.press("Control+v")
     popup_2.wait_for_timeout(3000)
 
+def test_auth_popups_handling(playwright:Playwright):
+    browser = playwright.chromium.launch(headless=False)
 
+    context = browser.new_context(http_credentials={"username":'admin',"password":'admin'})
+
+    page = context.new_page()
+
+    page.goto("https://the-internet.herokuapp.com/basic_auth")
+
+    page.wait_for_timeout(3000)

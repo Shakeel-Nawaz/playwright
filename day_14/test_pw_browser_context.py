@@ -32,10 +32,15 @@ To Create New Page      ->          Using created Context, we can create single/
                                     Using "page Fixture", we can directly create new Page, with default Browser Instance and Default Context
                                     i.e.    def test_ABC(page:Page):                <----- Here 'page'     is    Fixture
                                     i.e.        page1 = page.goto("https//:www.google.com")
+
+
+Some Basic Functions
+1.    List all Contexts       ->      playwright.<browserType>.launch().contexts
+2.    List all Pages          ->      playwright.<browserType>.launch().new_context().pages
 """
 
 def test_browser_context_page(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False,)                      # Creating Browser Instance with headed mode
+    browser = playwright.chromium.launch(headless=False)                      # Creating Browser Instance with headed mode
 
     context = browser.new_context()                                           # Creating New Browser Context
 
